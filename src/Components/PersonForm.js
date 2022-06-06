@@ -19,9 +19,12 @@ const PersonForm = ({ setError }) => {
   
     const submit = (event) => {
       event.preventDefault()
-  
-      createPerson({  variables: { name, phone, street, city } })
-        AlertaSuccess("Persona agregada correctamente!")
+      
+      createPerson({  variables: { name, phone, street, city } }).then((a)=>{
+        if(a.data){
+          AlertaSuccess("Persona agregada correctamente!");
+        }
+      })
       setName('')
       setPhone('')
       setStreet('')
